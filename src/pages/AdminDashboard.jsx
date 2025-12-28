@@ -43,7 +43,8 @@ export default function AdminDashboard() {
     const downloadReceipt = async (receiptId) => {
         try {
             const token = localStorage.getItem('token');
-            window.open(`http://localhost:5000/api/receipts/download/${receiptId}?token=${token}`, '_blank');
+            const baseURL = api.defaults.baseURL.replace('/api', '');
+            window.open(`${baseURL}/api/receipts/download/${receiptId}?token=${token}`, '_blank');
         } catch (error) {
             console.error('Error downloading receipt:', error);
         }
